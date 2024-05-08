@@ -37,7 +37,7 @@ function GameComponent() {
       if (res || moveCounter === 10) {
         setEndOfGame(true);
         if (res) {
-          setGameResult(`Congrats, the winner is ${winner}`);
+          setGameResult(`The winner is ${winner}`);
         } else {
           setGameResult("It's a draw");
         }
@@ -54,7 +54,7 @@ function GameComponent() {
   };
 
   return (
-    <div className="vertical-container">
+    <div className="game-container">
       <div className="grid-container">
         {dataState.map((elem, index) => (
           <div
@@ -66,10 +66,12 @@ function GameComponent() {
         ))}
       </div>
       {endOfGame && (
-        <>
-          <p>{gameResult}</p>
-          <button onClick={restart}>Restart</button>
-        </>
+        <div className="result-container">
+          <h3>{gameResult}</h3>
+          <button className="restart-button" onClick={restart}>
+            Restart
+          </button>
+        </div>
       )}
     </div>
   );
