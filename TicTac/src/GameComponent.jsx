@@ -1,3 +1,4 @@
+import { CSSTransition } from "react-transition-group";
 import "./styles/GameComponent.style.css";
 import CellComponent from "./CellComponent";
 import { useState } from "react";
@@ -65,14 +66,19 @@ function GameComponent() {
           </div>
         ))}
       </div>
-      {endOfGame && (
+      <CSSTransition
+        in={endOfGame}
+        timeout={3000}
+        classNames="fade"
+        unmountOnExit
+      >
         <div className={"result-container"}>
           <h3>{gameResult}</h3>
           <button className="restart-button" onClick={restart}>
             Restart
           </button>
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 }
