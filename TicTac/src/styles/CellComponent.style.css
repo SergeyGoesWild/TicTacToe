@@ -8,12 +8,27 @@
   height: 100px;
   border-radius: 17px;
   user-select: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .cell:hover {
   cursor: pointer;
+  background-color: rgb(242, 242, 242);
 }
 
 /* .cell p {
   opacity: 0.1;
 } */
+
+.cell p {
+  animation: oscillateScale 2s ease-in-out;
+}
+
+@keyframes oscillateScale {
+  0% {
+    transform: scale(0); /* Start and end state: normal size */
+  }
+  100% {
+    transform: scale(1); /* Midpoint: scaled up */
+  }
+}

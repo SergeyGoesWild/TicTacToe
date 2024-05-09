@@ -7,6 +7,7 @@
   margin-top: 27vh;
   user-select: none;
   align-items: center;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .grid-container {
@@ -18,10 +19,12 @@
 
 .result-container{
   margin-top: 1vh;
+  width: 60%;
 }
 
 .result-container h3{
   padding: 2vh 0;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .restart-button {
@@ -38,5 +41,30 @@
   font-weight: 450;
   color: #36395a;
   line-height: 26px;
+  animation: fadeIn2 1s ease-out;
 }
 
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes fadeIn2 {
+  0% {
+      opacity: 0;
+  }
+  50% {
+    opacity: 0;
+}
+  100% {
+      opacity: 1;
+  }
+}
+
+.non-visible {
+  display: none;
+}

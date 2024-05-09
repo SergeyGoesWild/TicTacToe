@@ -66,7 +66,7 @@ function GameComponent() {
         ))}
       </div>
       {endOfGame && (
-        <div className="result-container">
+        <div className={"result-container"}>
           <h3>{gameResult}</h3>
           <button className="restart-button" onClick={restart}>
             Restart
