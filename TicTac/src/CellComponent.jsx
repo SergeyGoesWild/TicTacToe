@@ -4,7 +4,7 @@ import "./styles/CellComponent.style.css";
 function CellComponent({ elem, onClickCell }) {
   return (
     <div
-      className="cell"
+      className={`cell ${isFadeOut ? "fade-out" : ""}`}
       onClick={() => {
         onClickCell(elem.key);
       }}
