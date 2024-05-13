@@ -13,7 +13,7 @@ function CellComponent({ elem, onClickCell, restartPressed }) {
 
   return (
     <div
-      className={`cell ${isFadeOut ? "fade-out" : ""}`}
+      className="cell"
       onClick={() => {
         onClickCell(elem.key);
         setFadeAnim(true);

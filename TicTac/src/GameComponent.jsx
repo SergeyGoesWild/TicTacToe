@@ -1,4 +1,3 @@
-import { CSSTransition } from "react-transition-group";
 import "./styles/GameComponent.style.css";
 import CellComponent from "./CellComponent";
 import { useState, useRef } from "react";
