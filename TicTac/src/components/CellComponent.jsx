@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "./styles/CellComponent.style.css";
+import "../styles/CellComponent.style.css";
 import { CSSTransition } from "react-transition-group";
 
 function CellComponent({ elem, onClickCell, restartPressed }) {

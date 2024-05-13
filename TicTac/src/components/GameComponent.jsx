@@ -1,8 +1,8 @@
-import "./styles/GameComponent.style.css";
+import "../styles/GameComponent.style.css";
 import CellComponent from "./CellComponent";
 import { useState, useRef } from "react";
-import checkRes from "./CheckRes.js";
-import data from "./DataMock.js";
+import checkRes from "../scripts/CheckRes.js";
+import data from "../scripts/DataMock.js";
 import { CSSTransition } from "react-transition-group";
 
 function GameComponent() {

@@ -4,7 +4,6 @@ function checkRes(tableFull) {
   const table = tableFull.map((elem) => {
     return elem.value;
   });
-  console.log(table);
 
   // horizontal
   for (let i = 0; i < side * side; i += 3) {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GameComponent from "./GameComponent.jsx";
+import GameComponent from "./components/GameComponent.jsx";
 import "./App.css";
 
 function App() {
