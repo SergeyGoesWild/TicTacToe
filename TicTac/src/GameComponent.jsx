@@ -1,16 +1,18 @@
 import "./styles/GameComponent.style.css";
 import CellComponent from "./CellComponent";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import checkRes from "./CheckRes.js";
 import data from "./DataMock.js";
-
-let moveCounter = 1;
+import { CSSTransition } from "react-transition-group";
 
 function GameComponent() {
+  const [moveCounter, setMoveCounter] = useState(1);
   const [dataState, setDataState] = useState(data);
   const [actElem, setActElem] = useState("❎");
   const [endOfGame, setEndOfGame] = useState(false);
   const [gameResult, setGameResult] = useState("");
+  const [restartPressed, setRestartPressed] = useState(false);
+  const nodeRef = useRef(null);
 
   const changeSym = () => {
     if (actElem === "❎") {
@@ -32,9 +34,9 @@ function GameComponent() {
       ];
       setDataState(newTable);
       changeSym();
-      moveCounter += 1;
+      setMoveCounter((prevValue) => prevValue + 1);
       let { res, winner } = checkRes(newTable);
-      if (res || moveCounter === 10) {
+      if (res || moveCounter + 1 === 10) {
         setEndOfGame(true);
         if (res) {
           setGameResult(`The winner is ${winner}`);
@@ -46,11 +48,14 @@ function GameComponent() {
   };
 
   const restart = () => {
-    console.log("------------------");
+    setRestartPressed(true);
     setEndOfGame(false);
-    setDataState(data);
     setActElem("❎");
-    moveCounter = 1;
+    setMoveCounter(1);
+    setTimeout(() => {
+      setDataState(data);
+      setRestartPressed(false);
+    }, 500);
   };
 
   return (
@@ -61,18 +66,28 @@ function GameComponent() {
             key={index}
             style={{ pointerEvents: endOfGame ? "none" : "auto" }}
           >
-            <CellComponent elem={elem} onClickCell={onClickCell} />
+            <CellComponent
+              elem={elem}
+              onClickCell={onClickCell}
+              restartPressed={restartPressed}
+            />
           </div>
         ))}
       </div>
-      {endOfGame && (
-        <div className={"result-container"}>
+      <CSSTransition
+        in={endOfGame}
+        timeout={500}
+        classNames="fade"
+        unmountOnExit
+        nodeRef={nodeRef}
+      >
+        <div className={"result-container"} ref={nodeRef}>
           <h3>{gameResult}</h3>
           <button className="restart-button" onClick={restart}>
             Restart
           </button>
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 }
