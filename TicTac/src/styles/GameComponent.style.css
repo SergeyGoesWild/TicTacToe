@@ -4,10 +4,9 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  margin-top: 27vh;
+  padding-top: 27vh;
   user-select: none;
   align-items: center;
-  animation: fadeIn 0.5s ease-out;
 }
 
 .grid-container {
@@ -24,7 +23,6 @@
 
 .result-container h3{
   padding: 2vh 0;
-  /* animation: fadeIn 0.5s ease-out; */
 }
 
 .restart-button {
@@ -41,29 +39,12 @@
   font-weight: 450;
   color: #36395a;
   line-height: 26px;
-  /* animation: fadeIn2 1s ease-out; */
+  transition: background-color 0.3s ease-in-out;
 }
 
-/* @keyframes fadeIn {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
+.restart-button:hover {
+  background-color:   rgb(242, 242, 242);
 }
-
-@keyframes fadeIn2 {
-  0% {
-      opacity: 0;
-  }
-  50% {
-    opacity: 0;
-}
-  100% {
-      opacity: 1;
-  }
-} */
 
 .fade-enter {
   opacity: 0;

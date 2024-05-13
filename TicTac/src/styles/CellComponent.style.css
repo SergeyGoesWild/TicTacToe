@@ -16,19 +16,20 @@
   background-color: rgb(242, 242, 242);
 }
 
-/* .cell p {
-  opacity: 0.1;
-} */
-
-.cell p {
-  animation: oscillateScale 2s ease-in-out;
+.fade-enter {
+  opacity: 0;
 }
 
-@keyframes oscillateScale {
-  0% {
-    transform: scale(0); /* Start and end state: normal size */
-  }
-  100% {
-    transform: scale(1); /* Midpoint: scaled up */
-  }
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
 }
