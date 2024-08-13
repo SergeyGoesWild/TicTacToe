@@ -2,32 +2,34 @@ import { useState, useRef, useEffect } from "react";
 import "../styles/CellComponent.style.css";
 import { CSSTransition } from "react-transition-group";
 
-function CellComponent({ elem, onClickCell, restartPressed }) {
-  const [fadeAnim, setFadeAnim] = useState(false);
-  const nodeRef = useRef(null);
-  useEffect(() => {
-    if (restartPressed) {
-      setFadeAnim(false);
-    }
-  }, [restartPressed]);
+function CellComponent({ elem, onClickCell, restartPressed, endOfGame }) {
+  const [tapped, setTapped] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div
-      className="cell"
-      onClick={() => {
-        onClickCell(elem.key);
-        setFadeAnim(true);
-      }}
+      className={hovered ? "cell-hover" : tapped ? "cell-tapped" : "cell"}
+      onClick={
+        elem.value === " "
+          ? () => {
+              onClickCell(elem.key);
+            }
+          : null
+      }
+      onTouchStart={elem.value === " " ? () => setTapped(true) : null}
+      onTouchEnd={() => setTapped(false)}
+      onMouseEnter={elem.value === " " ? () => setHovered(true) : null}
+      onMouseLeave={() => setHovered(false)}
     >
-      <CSSTransition
-        in={fadeAnim}
-        timeout={500}
-        classNames="fade"
-        unmountOnExit
-        nodeRef={nodeRef}
+      <p
+        className={
+          restartPressed ? "fade-out" : elem.value != " " ? "fade-in" : null
+        }
       >
-        <p ref={nodeRef}>{elem.value}</p>
-      </CSSTransition>
+        {elem.value}
+      </p>
+      {/* <p className={restartPressed ? "fade-out" : null}>A</p> */}
+      {/* </CSSTransition> */}
     </div>
   );
 }

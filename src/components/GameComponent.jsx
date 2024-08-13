@@ -59,35 +59,29 @@ function GameComponent() {
   };
 
   return (
-    <div className="game-container">
+    <div className={endOfGame ? "game-container-go" : "game-container"}>
       <div className="grid-container">
         {dataState.map((elem, index) => (
-          <div
+          <CellComponent
             key={index}
-            style={{ pointerEvents: endOfGame ? "none" : "auto" }}
-          >
-            <CellComponent
-              elem={elem}
-              onClickCell={onClickCell}
-              restartPressed={restartPressed}
-            />
-          </div>
+            elem={elem}
+            onClickCell={onClickCell}
+            restartPressed={restartPressed}
+            endOfGame={endOfGame}
+          />
         ))}
       </div>
-      <CSSTransition
-        in={endOfGame}
-        timeout={500}
-        classNames="fade"
-        unmountOnExit
-        nodeRef={nodeRef}
-      >
-        <div className={"result-container"} ref={nodeRef}>
-          <h3>{gameResult}</h3>
-          <button className="restart-button" onClick={restart}>
-            Restart
-          </button>
-        </div>
-      </CSSTransition>
+
+      <div className={"result-container"}>
+        {endOfGame && (
+          <>
+            <h3>{gameResult}</h3>
+            <button className="restart-button" onClick={restart}>
+              Restart
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

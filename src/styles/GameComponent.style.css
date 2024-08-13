@@ -1,12 +1,17 @@
-
-.game-container {
+.game-container, .game-container-go {
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
-  padding-top: 27vh;
   user-select: none;
   align-items: center;
+  padding-top: 18vh;
+  transition: padding-top 0.3s ease-in-out;
+}
+
+.game-container-go {
+  padding-top: 6vh;
+  transition: padding-top 0.3s ease-in-out;
 }
 
 .grid-container {
@@ -17,16 +22,18 @@
 }
 
 .result-container{
-  margin-top: 1vh;
-  width: 60%;
+  margin-top: 3vh;
+  width: 80%;
+  height: 20vh;
 }
 
 .result-container h3{
   padding: 2vh 0;
+  font-size: 1.3rem;
 }
 
 .restart-button {
-  width: 60%;
+  width: 50%;
   display: inline-block;
   outline: 0;
   border: 0;
@@ -63,3 +70,66 @@
   opacity: 0;
   transition: opacity 500ms ease-out;
 }
+
+@media (pointer: coarse) {
+  .element:hover {
+    background-color: inherit;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 85px);
+    grid-gap: 15px;
+  }
+  .result-container h3{
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 480px) {
+  .grid-container {
+    grid-gap: 15px;
+  }
+  .result-container h3{
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) and (orientation: portrait) {
+  .grid-container {
+    grid-template-columns: repeat(3, 110px);
+    grid-gap: 20px;
+  }
+  .result-container h3{
+    font-size: 2rem;
+  }
+}
+ 
+@media screen and (min-width: 1000px) and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 20px;
+  }
+  .result-container h3{
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1600px) {
+  
+}
+
+@media screen and (min-width: 1900px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 125px);
+    grid-gap: 20px;
+  }
+  .result-container h3{
+    font-size: 2rem;
+  }
+  .restart-button {
+    font-size: 20px;
+    height: 30%;
+  }
+} 
